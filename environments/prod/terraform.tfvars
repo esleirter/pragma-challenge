@@ -1,0 +1,2 @@
+project     = "pragma"
+environment = "prod"
