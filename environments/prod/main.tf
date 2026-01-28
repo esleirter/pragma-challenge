@@ -4,6 +4,14 @@ module "dns" {
   tags        = local.tags
 }
 
+module "dns_records" {
+  source  = "../../modules/route53-records"
+  zone_id = module.dns.zone_id
+
+  records = local.records
+}
+
+
 module "s3_frontend" {
   source          = "../../modules/s3-frontend"
   project         = var.project
