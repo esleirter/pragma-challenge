@@ -4,7 +4,7 @@ locals {
     "www" = {
       type            = "A"
       alias           = true
-      target          = module.cloudfront.cloudfront_domain
+      target          = module.cloudfront_frontend.cloudfront_domain
       zone_id         = "Z2FDTNDATAQYW2"
       evaluate_health = false
     }

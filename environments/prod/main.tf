@@ -22,7 +22,7 @@ module "s3_frontend" {
   tags            = local.tags
 }
 
-module "cloudfront" {
+module "cloudfront_frontend" {
   depends_on      = [module.s3_frontend, module.dns]
   source          = "../../modules/cloudfront-oac"
   project         = var.project
