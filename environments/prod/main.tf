@@ -1,3 +1,9 @@
+module "dns" {
+  source      = "../../modules/route53"
+  domain_name = "pragma-ev.com"
+  tags        = local.tags
+}
+
 module "s3_frontend" {
   source          = "../../modules/s3-frontend"
   project         = var.project
@@ -9,7 +15,7 @@ module "s3_frontend" {
 }
 
 module "cloudfront" {
-  depends_on      = [module.s3_frontend]
+  depends_on      = [module.s3_frontend, module.dns]
   source          = "../../modules/cloudfront-oac"
   project         = var.project
   environment     = var.environment
@@ -17,7 +23,7 @@ module "cloudfront" {
   s3_bucket_id    = module.s3_frontend.bucket_name
   log_bucket_name = "buckets-pragma-logs"
 
-  acm_certificate_arn = ""
-  domain_name         = ""
+  acm_certificate_arn = module.dns.certificate_arn
+  domain_name         = "www.${module.dns.domain_name}"
   tags                = local.tags
 }
