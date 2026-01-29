@@ -73,3 +73,17 @@ module "backend_api" {
 
   tags = local.tags
 }
+
+module "valkey_cache" {
+  source = "../../modules/valkey"
+
+  project            = var.project
+  environment        = var.environment
+  vpc_id             = module.networking.vpc_id
+  private_subnet_ids = module.networking.private_subnet_ids
+
+  instances_count    = 1
+  application_usages = ["cache"]
+
+  tags = local.tags
+}
