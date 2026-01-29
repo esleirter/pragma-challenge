@@ -35,3 +35,23 @@ module "cloudfront_frontend" {
   domain_name         = "www.${module.dns.domain_name}"
   tags                = local.tags
 }
+
+
+module "networking" {
+  source = "../../modules/networking"
+
+  project     = var.project
+  environment = var.environment
+
+  vpc_cidr_block               = "172.16.0.0/21"
+  subnet_private_1a_cidr_block = "172.16.0.0/23"
+  subnet_private_1b_cidr_block = "172.16.2.0/23"
+  subnet_private_1c_cidr_block = "172.16.4.0/23"
+  subnet_public_1a_cidr_block  = "172.16.6.0/25"
+  subnet_public_1b_cidr_block  = "172.16.6.128/25"
+  subnet_public_1c_cidr_block  = "172.16.7.0/25"
+
+  region = var.region
+
+  tags = local.tags
+}

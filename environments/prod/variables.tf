@@ -44,3 +44,10 @@ variable "environment" {
     error_message = "Ambiente debe ser dev, uat o prod"
   }
 }
+
+variable "region" {
+  description = "AWS Region"
+  type        = string
+  default     = "us-east-1"
+
+}
