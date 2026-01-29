@@ -13,6 +13,22 @@ Repositorio de **Infraestructura como Código (IaC)** para implementar una aplic
 
 ---
 
+
+## Estimación de costos
+
+En el directorio `assets/` se incluye el archivo **`Estimacion.pdf`**, el cual contiene la **estimación de costos de la arquitectura propuesta**, generada utilizando **AWS Pricing Calculator**.
+
+Este documento detalla:
+- Servicios AWS considerados en la solución (Frontend, Backend, Datos y Networking).
+- Supuestos de uso (tráfico, requests, almacenamiento, cómputo).
+- Estimación mensual aproximada de costos.
+- Enfoque en costo-eficiencia usando servicios administrados y serverless.
+
+📄 **Ruta del archivo**:  
+`assets/Estimacion.pdf`
+
+---
+
 ## ¿Qué despliega?
 
 - **Frontend**: hosting estático en **S3** servido por **CloudFront** (con **OAC**), con logs opcionales a un bucket dedicado.
