@@ -21,6 +21,24 @@ locals {
       target = "backoffice.provider.com"
     }
   }
+
+  backend_services = {
+    "api" = {
+      path               = "api"
+      runtime            = "nodejs18.x"
+      handler            = "index.handler"
+      zip_key            = "api-lambda.zip"
+      authorization_type = "NONE"
+    },
+
+    "users" = {
+      path               = "users"
+      runtime            = "nodejs18.x"
+      handler            = "index.handler"
+      zip_key            = "users-lambda.zip"
+      authorization_type = "JWT"
+    }
+  }
   tags = {
     Project     = var.project
     Environment = var.environment
@@ -49,5 +67,4 @@ variable "region" {
   description = "AWS Region"
   type        = string
   default     = "us-east-1"
-
 }

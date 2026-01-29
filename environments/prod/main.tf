@@ -58,3 +58,18 @@ module "networking" {
 
   tags = local.tags
 }
+
+module "backend_api" {
+  source = "../../modules/api-lambda"
+
+  project     = var.project
+  environment = var.environment
+
+  services      = local.backend_services
+  lambda_bucket = "buckets-pragma-lambdas"
+
+  vpc_id     = module.networking.vpc_id
+  subnet_ids = module.networking.private_subnet_ids
+
+  tags = local.tags
+}
