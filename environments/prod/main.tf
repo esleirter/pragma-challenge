@@ -87,3 +87,16 @@ module "valkey_cache" {
 
   tags = local.tags
 }
+
+module "rds_mysql" {
+  source = "../../modules/rds"
+
+  project     = var.project
+  environment = var.environment
+
+  vpc_id             = module.networking.vpc_id
+  private_subnet_ids = module.networking.private_subnet_ids
+
+  tags = local.tags
+
+}
