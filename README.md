@@ -221,7 +221,6 @@ tfsec ./
 
 ## Notas / mejoras futuras
 
-- Separar la creación de buckets “globales” (`buckets-pragma-logs`, `buckets-pragma-lambdas`) en un módulo/base común.
-- Añadir WAF (CloudFront/API Gateway) y rate limiting.
-- Añadir GitHub Actions para `fmt/validate/tflint/tfsec/checkov` + plan/apply por ambiente.
-- Parametrizar dominio (`pragma-ev.com`) y records para que sean 100% reutilizables.
+- Publicar cada módulo Terraform en **repositorios independientes**, con **versionado semántico** y consumo vía `ref` (tags).
+- Añadir soporte para **ECS (Fargate/EC2)** para workloads que no encajen en Lambda.
+- Poder agregar una nueva region de failover region en caso de deastres
