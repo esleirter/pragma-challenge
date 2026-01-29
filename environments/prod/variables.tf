@@ -42,7 +42,7 @@ locals {
   tags = {
     Project     = var.project
     Environment = var.environment
-    Owner       = "cloudops"
+    Owner       = "Esleirter Vilchez"
     CostCenter  = "12345"
     Terraform   = "true"
   }
