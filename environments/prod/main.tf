@@ -1,19 +1,21 @@
 module "dns" {
-  source      = "../../modules/route53"
+  source = "../../modules/route53"
+
   domain_name = "pragma-ev.com"
   tags        = local.tags
 }
 
 module "dns_records" {
-  source  = "../../modules/route53-records"
-  zone_id = module.dns.zone_id
+  source = "../../modules/route53-records"
 
+  zone_id = module.dns.zone_id
   records = local.records
 }
 
 
 module "s3_frontend" {
-  source          = "../../modules/s3-frontend"
+  source = "../../modules/s3-frontend"
+
   project         = var.project
   environment     = var.environment
   index_document  = "index.html"
@@ -23,8 +25,9 @@ module "s3_frontend" {
 }
 
 module "cloudfront_frontend" {
-  depends_on      = [module.s3_frontend, module.dns]
-  source          = "../../modules/cloudfront-oac"
+  depends_on = [module.s3_frontend, module.dns]
+  source     = "../../modules/cloudfront-oac"
+
   project         = var.project
   environment     = var.environment
   s3_bucket_arn   = module.s3_frontend.bucket_arn
