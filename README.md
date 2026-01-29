@@ -214,7 +214,6 @@ tfsec ./
 
 - CloudFront + OAC para acceso privado al bucket S3 del frontend.
 - Recursos de datos en subnets privadas (RDS/Valkey) con Security Groups acotados.
-- IAM por función Lambda (principio de mínimo privilegio ampliable).
 - Cifrado en reposo (S3/RDS/Valkey) según configuración de cada módulo.
 
 ---
